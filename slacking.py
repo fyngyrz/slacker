@@ -4,6 +4,46 @@ import sys
 import cgi
 from aa_macro import *
 
+#     Project: slacking.py
+#      Author: fyngyrz  (Ben)
+#     Contact: fyngyrz@gmail.com (bugs, feature requests, kudos, bitter rejections)
+#     Project: slacker.py
+#    Homepage: https://github.com/fyngyrz/slacker
+#  Depends on: https://github.com/fyngyrz/aa_macro
+#     License: None. It's free. *Really* free. Defy invalid social and legal norms.
+# Disclaimers: 1) Probably completely broken. Do Not Use. You were explicitly warned. Phbbbbt.
+#              2) My code is blackbox, meaning I wrote it without reference to other people's code
+#              3) I can't check Other People's Code effectively, so if you use any version
+#                 of this that incorporates accepted commits from others, you are then risking
+#                 the dangers of OPC, as *well* as risking the use of my code. Using OPC
+#                 *also* means you will be using code that may or may not be protected by
+#                 copyright, patent, and the like, because our intellectual property system
+#                 is pathological. All risks and responsibilities and any subsequent
+#                 consequences of this are entirely yours. Have you written your congresscritter
+#                 about patent and copyright reform yet?
+#  Incep Date: November 24th, 2015
+#     LastRev: November 24th, 2015
+#  LastDocRev: November 24th, 2015
+# Tab spacing: 4 (set your editor to this for sane formatting while reading)
+#     Dev Env: Ubuntu 12.04.5 LTS, Python 2.7.3, Apache2
+#      Status: BETA
+#    Policies:  I will make every effort to never remove functionality or
+#               alter existing functionality once past BETA stage. Anything
+#               new will be implemented as something new, thus preserving all
+#               behavior and API. The only intentional exceptions to this
+#               are if a bug is found that does not match the intended behavior,
+#               or I determine there is some kind of security risk. What I
+#               *will* do is not document older and less capable versions of a
+#               function, unless the new functionality is incapable of doing
+#               something the older version(s) could do. Remember, this only
+#               applies to production code. Until the BETA status is removed,
+#               ANYTHING may change. Also, read "Disclaimers", above. Then
+#               read it again. Note that while production code as I define it
+#               will be more stable, that doesn't imply in any way that it is
+#               more, or even at all, reliable. Read "Disclaimers", above. Did
+#               I mention you should read the disclaimers? Because you know,
+#               you really should. Several times. Read the disclaimers, that is.
+
 mode = 0
 if mode == 0:
 	test = False
