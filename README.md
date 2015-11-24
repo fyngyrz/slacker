@@ -50,8 +50,9 @@ You'll need two items from slack. The first is a BOT token, and the
 second is an incoming WebHook URL. The BOT is used to send what you type
 to the script on your server, and the WebHook is used to send the result
 back to slack. Both are easily obtained from the "Integrations" menu
-option on slack. The token is used to verify that the incoming request
-to `slacking.py` on your webserver is actually coming from slack.
+option on slack within your team space. The token is used to verify that
+the incoming request to `slacking.py` on your webserver is actually
+coming from slack.
 
 Slack will ask what URL the BOT is to invoke. Let's say that you are
 using the cgi-bin web structure, so that CGI runs on your server when
