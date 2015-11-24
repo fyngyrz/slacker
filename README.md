@@ -64,6 +64,10 @@ There are three built-in commands in `slacking.py`:
 **vocab** -- lists the available macros in `slack-cannery.txt`  
 **cleanup** -- removes older versions of macros you've re-written  
 
+You use these like this:
+
+**/m help**
+
 That's just the proverbial tip of the iceberg. You can parse out
 individual parameters, process what you get all *kinds* of ways, etc. I
 use `aa_macro` for everything from invoking my knowledgebase software to
