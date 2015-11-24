@@ -16,31 +16,31 @@ as having come from you. For instance, my ID on slack is "fyngyrz", and
 the BOT I've set up uses */m* so this is an example of one of the things
 I can do:
 
-After I type this: */m The temperature here is {tmp}* 
+After I type this: **/m The temperature here is {tmp}**
 
-This text appears: *The temperature here is 32.2F*
+This text appears: **The temperature here is 32.2F**
 
 `aa_macro` is _extremely_ capable. It can take parameters, parse
 them, run system commands, is extensible and can use include files.
 For instance, this:
 
-*[style gm Good morning, [b]]*
+**[style gm Good morning, [b]]**
 
 When invoked this way:
 
-*/m {gm Ben}*
+**/m {gm Ben}**
 
 Will produce this in-channel:
 
-*Good morning, Ben*
+**Good morning, Ben**
 
-That's just the proverbial tip of the iceberg. I use aa_macro for
-everything from invoking my knowledgebase software to a
-script that fetches the local weather conditions from the
-national weather service. To learn more, visit my aa_macro
-repo and check it out. It's extensively documented, and of
-course if you find something needs more explanation, just
-me know via the repo and I'll get right on it.
+That's just the proverbial tip of the iceberg. You can parse out
+individual parameters, process what you get all *kinds* of ways, etc. I
+use `aa_macro` for everything from invoking my knowledgebase software to
+a script that fetches the local weather conditions from the national
+weather service. To learn more, visit my aa_macro repo and check it out.
+It's extensively documented, and of course if you find something needs
+more explanation, just me know via the repo and I'll get right on it.
 
 ## Setup
 
