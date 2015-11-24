@@ -35,7 +35,9 @@ Will produce this in-channel (of course it won't say "fyngyrz" for you):
 **fyngyrz: Good morning, Ben**
 
 Here are some screen captures where I prod my knowledgebase software
-via `aa_macro` and `slacker.py`:
+via `aa_macro` and `slacker.py` -- remember that the **/m** invocations
+are private so only you see them, while the responses come in the
+public channel:
 
 ![Asking...](http://fyngyrz.com/images/d1.png)  
 ![...Answer](http://fyngyrz.com/images/d2.png)  
