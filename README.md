@@ -37,7 +37,7 @@ Will produce this in-channel (of course it won't say "fyngyrz" for you):
 Here are some screen captures where I prod my knowledgebase software
 via `aa_macro` and `slacker.py`:
 
-!(http;//fyngyrz.com/images.png)
+!(http;//fyngyrz.com/images/d1.png)
 
 That's just the proverbial tip of the iceberg. You can parse out
 individual parameters, process what you get all *kinds* of ways, etc. I
