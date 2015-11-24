@@ -44,11 +44,19 @@ public channel:
 ![Further inquiry...](http://fyngyrz.com/images/d3.png)  
 ![...Answer](http://fyngyrz.com/images/d4.png)  
 
-This is the `aa_macro` source I use to invoke the knowledgebase:
+This is the complete `aa_macro` source I use to invoke the knowledgebase:
 
 ![macro source](http://fyngyrz.com/images/d5.png)  
 
-See how easy that is?
+here's what you're looking at: The square brackets define `aa_macro`
+primitives. "style" is the primitive that defines a macro. "kb" is the
+name of the macro. "sys" is the primitive that runs and captures system
+executables. "./aip.py" is the actual command run by "sys". and "[b]" is
+the primitive that feeds the content after the macro name into the macro
+in that position.
+
+The stdout output of `aip.py` is automatically captured, and returned to
+the channel. See how easy that was?
 
 That's just the proverbial tip of the iceberg. You can parse out
 individual parameters, process what you get all *kinds* of ways, etc. I
