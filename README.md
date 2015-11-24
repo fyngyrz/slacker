@@ -44,6 +44,12 @@ public channel:
 ![Further inquiry...](http://fyngyrz.com/images/d3.png)  
 ![...Answer](http://fyngyrz.com/images/d4.png)  
 
+This is the `aa_macro` source I use to invoke the knowledgebase:
+
+![macro source](http://fyngyrz.com/images/d5.png)  
+
+See how easy that is?
+
 That's just the proverbial tip of the iceberg. You can parse out
 individual parameters, process what you get all *kinds* of ways, etc. I
 use `aa_macro` for everything from invoking my knowledgebase software to
