@@ -2,8 +2,8 @@
 
 ## Overview
 
-Reauired: [aa\_macro.py](https://github.com/fyngyrz/aa_macro), a webserver
-within which you can install this software and `aa\_macro.py` itself.
+Required: [aa\_macro.py](https://github.com/fyngyrz/aa_macro), a webserver
+within which you can install this software, and `slacker.py` itself.
 
 `slacker.py` is software that brings the power of the `aa_macro.py`
 library to slack's groupware.
