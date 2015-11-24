@@ -63,9 +63,11 @@ the channel by `slacking.py`. See how easy that was?
 
 There are three built-in commands in `slacking.py`:
 
-**help** -- lists these commands  
-**vocab** -- lists the available macros in `slack-cannery.txt`  
-**cleanup** -- removes older versions of macros you've re-written  
+Command | Function
+------- | --------
+**help** | lists these commands  
+**vocab** | lists the available macros in `slack-cannery.txt`  
+**cleanup** | removes older versions of macros you've re-written  
 
 You use these like this:
 
