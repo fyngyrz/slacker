@@ -10,19 +10,19 @@ library to slack's groupware.
 
 The way it works is you type a BOT invocation into a room, which is
 private (meaning, no one sees what you type but you) the BOT sends what
-you typed off to your webserver, where it is def through `aa_macro.py`,
-and then returned to the room publicly in the processed form, identified
-as having come from you. For instance, my ID on slack is "fyngyrz", and
-the BOT I've set up uses */m* so this is an example of one of the things
-I can do:
+you typed off to your webserver without dumping it in the public
+channel, where it is fed through `aa_macro.py` by `slacker.py`, and then
+returned to the room publicly in the processed form, identified as
+having come from you. For instance, my ID on slack is "fyngyrz", and the
+BOT I've set up uses **/m** so this is an example of one of the things I can do:
 
 After I type this: **/m The temperature here is {tmp}**
 
-This text appears: **The temperature here is 32.2F**
+This text appears: **fyngyrz: The temperature here is 32.2F**
 
-`aa_macro` is _extremely_ capable. It can take parameters, parse
-them, run system commands, is extensible and can use include files.
-For instance, this:
+`aa_macro` is _extremely_ capable. It can take parameters, parse them,
+run system commands, is extensible via external files and can use
+include files. For instance, this:
 
 **[style gm Good morning, [b]]**
 
@@ -30,9 +30,9 @@ When invoked this way:
 
 **/m {gm Ben}**
 
-Will produce this in-channel:
+Will produce this in-channel (of course it won't say "fyngyrz" for you):
 
-**Good morning, Ben**
+**fyngyrz: Good morning, Ben**
 
 That's just the proverbial tip of the iceberg. You can parse out
 individual parameters, process what you get all *kinds* of ways, etc. I
@@ -73,22 +73,24 @@ You don't need anything else from the aa\_macro repo. But you'll want to read th
 [aa_macro User's Guide](https://github.com/fyngyrz/aa_macro/blob/master/users-guide.md)
 and then keep a link to the
 [aa_macro Quick Reference](https://github.com/fyngyrz/aa_macro/blob/master/quickref.md)
-handy.
+handy. Your server must be set up to allow execution of Python scripts in its CGI
+configuration.
 
-Second, you place `slacking.py` in the same place. Permissions
-should be 755 (-rwxr-xr-x) -- You can rename slacking.py if you
-like, just be sure to tell slack's BOT what the correct name
-is.
+Second, you place `slacking.py` in the same place. Permissions on the 
+file should be 755 (-rwxr-xr-x) -- You can rename slacking.py if you
+like, just be sure to tell slack's BOT configurator what the correct
+name is.
 
-Third, you put the slack-cannery.txt file in a place that
-is read-write to your webserver user; this is because you
-can define macros right from slack, and they are saved in
-this file. Make sure the permissions on slack-cannery.txt
-are 666 (-rw-rw-rw-)
+Third, you put the slack-cannery.txt file in a place that is read-write
+to your webserver user; this is because you can define macros right from
+slack, and they are saved in this file, which requires a write
+operation. Make sure the permissions on slack-cannery.txt are 666
+(-rw-rw-rw-) Obligatory remark: "Muhaha"
 
-Fourth, set up the slacker.cfg file with the BOT token, the
-WebHook, and the location where slack-cannery.txt will be kept.
-`slacker.cfg` goes in the same CGI location as `slacker.py`
+Fourth, set up the slacker.cfg file with the BOT token, the WebHook, and
+the location where slack-cannery.txt will be kept according to the
+directions within the file. `slacker.cfg` goes in the same CGI location
+as `slacker.py`, as it is read-only under normal conditions.
 
 That's it. From there on in, things should work.
 
@@ -98,17 +100,17 @@ On slack, let's say you set up your BOT to respond to *\m*
 (that's what I did... because it's easy to type.) Try
 typing:
 
-*/m my reaction is {d}* 
+**/m my reaction is {d}**
 
 You should see, in the channel that you assigned to the
 WebHook:
 
-*my reaction is derp*
+**my reaction is derp**
 
 There are two ways to add macros to the system. The first can
 be done right from slack. Just invoke the bot with the style:
 
-*/m [style pizza I love me some pizza]*
+**/m [style pizza I love me some pizza]**
 
 After that, typing */m {pizza}* will emit "I love me some pizza"
 in the channel. The style is saved in `slack-cannery.txt` and will
@@ -126,6 +128,12 @@ The second way is by directly editing the `slack-cannery.txt` file at
 the server end. You can put anything in there directly, which allows you
 to invoke any arbitrary command or script on your server that the web
 user has permission to run.
+
+_Note:_ **If you use this method, make sure each line with a style
+definition ends with two spaces: This tells `aa_macro` to not include
+the END-OF-LINE in the output text. The EOL is, technically speaking,
+outside of the style definition, so it is treated as something to
+reprodude unless the double-space convention is used to prevent it.**
 
 Note that the input text _to_ `slacker.py` is cleansed of backticks,
 single and double quotes, the equals sign, and backslashes. These are
