@@ -69,7 +69,7 @@ Command | Function
 **vocab** | lists the available macros in `slack-cannery.txt`  
 **cleanup** | removes older versions of macros you've re-written  
 
-You use these like this:
+You use these within slack like this:
 
 **/m help**
 
