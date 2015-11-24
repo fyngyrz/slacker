@@ -68,7 +68,8 @@ http://yourserver.com/cgi-bin/slacking.py
 
 First, you need to go get [aa_macro.py](https://github.com/fyngyrz/aa_macro) -- all
 you have to do with it is put `aa_macro.py` in the directory where your
-CGI runs. Permissions should be 755 (-rwxr-xr-x) But you'll want to read the
+CGI runs. Permissions should be 755 (-rwxr-xr-x)
+You don't need anything else from the aa\_macro repo. But you'll want to read the
 [aa_macro User's Guide](https://github.com/fyngyrz/aa_macro/blob/master/users-guide.md)
 and then keep the
 [aa_macro Quick Reference](https://github.com/fyngyrz/aa_macro/blob/master/quickref.md)
