@@ -1,0 +1,5 @@
+[cmap mylist][lset mylist,10,][lset mylist,13,]  
+[style nonl [translate mylist,[b]]]  
+[style srg ¯\_(ツ)_/¯]  
+[style systime {nonl [sys date]}]  
+[style d derp]  
