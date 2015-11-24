@@ -34,6 +34,11 @@ Will produce this in-channel (of course it won't say "fyngyrz" for you):
 
 **fyngyrz: Good morning, Ben**
 
+Here are some screen captures where I prod my knowledgebase software
+via `aa_macro` and `slacker.py`:
+
+!(http;//fyngyrz.com/images.png)
+
 That's just the proverbial tip of the iceberg. You can parse out
 individual parameters, process what you get all *kinds* of ways, etc. I
 use `aa_macro` for everything from invoking my knowledgebase software to
