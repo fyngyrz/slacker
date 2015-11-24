@@ -184,6 +184,24 @@ aa_macro commands, but you can convert them back using the macros
 themselves if you really think that's a good idea (it isn't, but hey,
 it's your server. Perhaps you _like_ security holes.)
 
+## \(In\)Security
+
+The underlying idea here is that this only intended to run in a slack
+room that you and your more-or-less trusted associates are able to
+access, and therefore, worries about them trying to actively hack your
+server are... less than usual. Contrariwise, it is not advisable to run
+this within a slack environment where you have not actively decided to
+trust the others present with your server's health, welfare, data,
+connectivity, and so on.
+
+There are some provisions in place, such as the inability to define a
+macro that calls an OS system function directly from slack (you'll have
+to edit the `slack-cannery.txt` file for that) and some laundering of
+various command-line risky characters, but that's not to say that this
+is by any means bulletproof. If you have input for me on how to make it
+more solid, security-wise, than it is, I will be delighted to pay
+attention to what you have to say.
+
 ## Debugging
 
 If you decide to turn on debugging, `slacking.py` can record various things
