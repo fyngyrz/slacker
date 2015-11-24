@@ -20,7 +20,7 @@ After I type this: */m The temperature here is {tmp}*
 
 This text appears: *The temperature here is 32.2F*
 
-`aa\_macro` is _extremely_ capable. It can take parameters, parse
+`aa_macro` is _extremely_ capable. It can take parameters, parse
 them, run system commands, is extensible and can use include files.
 For instance, this:
 
@@ -34,7 +34,7 @@ Will produce this in-channel:
 
 *Good morning, Ben*
 
-That's just the proverbial tip of the iceberg. I use aa\_macro for
+That's just the proverbial tip of the iceberg. I use aa_macro for
 everything from invoking my knowledgebase software to a
 script that fetches the local weather conditions from the
 national weather service. To learn more, visit my aa_macro
@@ -66,9 +66,13 @@ http://yourserver.com/cgi-bin/slacking.py
 
 ### On your server
 
-First, you need to go get `aa\_macro.py` -- all you have to do with it
-is put `aa\_macro.py` in the directory where your CGI runs. Permissions
-should be 755 (-rwxr-xr-x)
+First, you need to go get [aa_macro.py](https://github.com/fyngyrz/aa_macro) -- all
+you have to do with it is put `aa_macro.py` in the directory where your
+CGI runs. Permissions should be 755 (-rwxr-xr-x) But you'll want to read the
+[aa_macro User's Guide](https://github.com/fyngyrz/aa_macro/blob/master/users-guide.md)
+and then keep the
+[aa_macro Quick Reference](https://github.com/fyngyrz/aa_macro/blob/master/quickref.md)
+handy.
 
 Second, you place `slacking.py` in the same place. Permissions
 should be 755 (-rwxr-xr-x) -- You can rename slacking.py if you
