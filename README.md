@@ -58,6 +58,12 @@ in that position.
 The stdout output of `aip.py` is automatically captured, and returned to
 the channel by `slacking.py`. See how easy that was?
 
+There are three built-in commands in `slacking.py`:
+
+**help** -- lists these commands  
+**vocab** -- lists the available macros in `slack-cannery.txt`  
+**cleanup** -- removes older versions of macros you've re-written  
+
 That's just the proverbial tip of the iceberg. You can parse out
 individual parameters, process what you get all *kinds* of ways, etc. I
 use `aa_macro` for everything from invoking my knowledgebase software to
