@@ -42,7 +42,7 @@ weather service. To learn more, visit my aa_macro repo and check it out.
 It's extensively documented, and of course if you find something needs
 more explanation, just me know via the repo and I'll get right on it.
 
-## Setup
+## Installation and Setup
 
 ### The slack end of things
 
@@ -73,7 +73,7 @@ You don't need anything else from the aa\_macro repo. But you'll want to read th
 [aa_macro User's Guide](https://github.com/fyngyrz/aa_macro/blob/master/users-guide.md)
 and then keep a link to the
 [aa_macro Quick Reference](https://github.com/fyngyrz/aa_macro/blob/master/quickref.md)
-handy. Your server must be set up to allow execution of Python scripts in its CGI
+handy. Your webserver must be set up to allow execution of Python scripts in its CGI
 configuration.
 
 Second, you place `slacking.py` in the same place. Permissions on the 
