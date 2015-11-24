@@ -1,17 +1,17 @@
-# slacker.py readme - BETA
+# slacking.py readme - BETA
 
 ## Overview
 
 Required: [aa\_macro.py](https://github.com/fyngyrz/aa_macro), a webserver
-within which you can install this software, and `slacker.py` itself.
+within which you can install this software, and `slacking.py` itself.
 
-`slacker.py` is software that brings the power of the `aa_macro.py`
+`slacking.py` is software that brings the power of the `aa_macro.py`
 library to slack's groupware.
 
 The way it works is you type a BOT invocation into a room, which is
 private (meaning, no one sees what you type but you) the BOT sends what
 you typed off to your webserver without dumping it in the public
-channel, where it is fed through `aa_macro.py` by `slacker.py`, and then
+channel, where it is fed through `aa_macro.py` by `slacking.py`, and then
 returned to the room publicly in the processed form, identified as
 having come from you. For instance, my ID on slack is "fyngyrz", and the
 BOT I've set up uses **/m** so this is an example of one of the things I can do:
@@ -35,7 +35,7 @@ Will produce this in-channel (of course it won't say "fyngyrz" for you):
 **fyngyrz: Good morning, Ben**
 
 Here are some actual screen captures where I prod my knowledgebase
-software via `aa_macro` and `slacker.py` -- remember that the **/m**
+software via `aa_macro` and `slacking.py` -- remember that the **/m**
 invocations are private so only you see them, while the responses arrive
 in the public channel:
 
@@ -56,7 +56,7 @@ the primitive that feeds the content after the macro name into the macro
 in that position.
 
 The stdout output of `aip.py` is automatically captured, and returned to
-the channel by `slacker.py`. See how easy that was?
+the channel by `slacking.py`. See how easy that was?
 
 That's just the proverbial tip of the iceberg. You can parse out
 individual parameters, process what you get all *kinds* of ways, etc. I
@@ -99,7 +99,9 @@ You don't need anything else from the aa\_macro repo. But you'll want to read th
 and then keep a link to the
 [aa_macro Quick Reference](https://github.com/fyngyrz/aa_macro/blob/master/quickref.md)
 handy. Your webserver must be set up to allow execution of Python scripts in its CGI
-configuration.
+configuration. You can rename "aa\_macro.py" and you probably should as a matter of
+system security. In that case, however, you'll need to change the associated import
+statement in `slacking.py` as well.
 
 Second, you place `slacking.py` in the same place. Permissions on the 
 file should be 755 (-rwxr-xr-x) -- You can rename slacking.py if you
@@ -115,11 +117,11 @@ operation. Make sure the permissions on slack-cannery.txt are 666
 Fourth, set up the slacker.cfg file with the BOT token, the WebHook, and
 the location where slack-cannery.txt will be kept according to the
 directions within the file. `slacker.cfg` goes in the same CGI location
-as `slacker.py`, as it is read-only under normal conditions.
+as `slacking.py`, as it is read-only under normal conditions.
 
 That's it. From there on in, things should work.
 
-## Using `slacker.py`
+## Using `slacking.py`
 
 On slack, let's say you set up your BOT to respond to *\m*
 (that's what I did... because it's easy to type.) Try
@@ -160,7 +162,7 @@ the END-OF-LINE in the output text. The EOL is, technically speaking,
 outside of the style definition, so it is treated as something to
 reprodude unless the double-space convention is used to prevent it.**
 
-Note that the input text _to_ `slacker.py` is cleansed of backticks,
+Note that the input text _to_ `slacking.py` is cleansed of backticks,
 single and double quotes, the equals sign, and backslashes. These are
 replaced with UTF-8 entities (slack uses UTF-8) both for security, and
 so that the JSON sent back via the WebHook doesn't break. This limits
@@ -171,16 +173,16 @@ it's your server. Perhaps you _like_ security holes.)
 
 ## Debugging
 
-If you decide to turn on debugging, `slacker.py` can record various things
-to a file called `slacker.txt` in the CGI directory. You'll probably have
+If you decide to turn on debugging, `slacking.py` can record various things
+to a file called `slacking.txt` in the CGI directory. You'll probably have
 to manually create the file and set it's permissions so that it can be
 written to, as well as (hopefully temporarily) setting your CGI directory
 to be likewise writable. A better choice is to change the file to a
 location elsewhere with the correct permissions. I've left it this
 way to  keep it simple. I figure if you're going to be debugging, you're
 sharp enough to change the file. See the *record\(\)* procedure in
-`slacker.py` to make the change.
+`slacking.py` to make the change.
 
 If you need to debug something, you might consider submitting any
 changes you find are required back to the repo so I can improve
-`slacker.py`.
+`slacking.py`.
