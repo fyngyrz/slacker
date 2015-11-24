@@ -2,8 +2,11 @@
 
 ## Overview
 
-Required: [aa\_macro.py](https://github.com/fyngyrz/aa_macro), a webserver
-within which you can install this software, and `slacking.py` itself.
+Required:
+
+* [aa\_macro.py](https://github.com/fyngyrz/aa_macro)
+* `slacking.py`
+* A webserver within which you can install this software
 
 `slacking.py` is software that brings the power of the `aa_macro.py`
 library to slack's groupware.
@@ -35,9 +38,9 @@ Will produce this in-channel (of course it won't say "fyngyrz" for you):
 **fyngyrz: Good morning, Ben**
 
 Here are some actual screen captures where I prod my knowledgebase
-software via `aa_macro` and `slacking.py` -- remember that the **/m**
-invocations are private so only you see them, while the responses arrive
-in the public channel:
+software right on slack via `aa_macro` and `slacking.py` -- remember
+that the **/m** invocations are private so only you see them, while the
+responses arrive in the public channel:
 
 ![Asking...](http://fyngyrz.com/images/d1.png)  
 ![...Answer](http://fyngyrz.com/images/d2.png)  
