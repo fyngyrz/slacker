@@ -12,7 +12,7 @@ Required:
 library to slack's groupware.
 
 The way it works is you type a BOT invocation into a room, which is
-private (meaning, no one sees what you type but you) the BOT sends what
+private \(meaning, no one sees what you type but you\) the BOT sends what
 you typed off to your webserver without dumping it in the public
 channel, where it is fed through `aa_macro.py` by `slacking.py`, and then
 returned to the room publicly in the processed form, identified as
@@ -33,7 +33,7 @@ When invoked this way:
 
 **/m {gm Ben}**
 
-Will produce this in-channel (of course it won't say "fyngyrz" for you):
+Will produce this in-channel \(of course it won't say "fyngyrz" for you\):
 
 **fyngyrz: Good morning, Ben**
 
@@ -106,7 +106,7 @@ http://yourserver.com/cgi-bin/slacking.py
 
 First, you need to go get [aa_macro.py](https://github.com/fyngyrz/aa_macro) -- all
 you have to do with it is put `aa_macro.py` in the directory where your
-CGI runs. Permissions should be 755 (-rwxr-xr-x)
+CGI runs. Permissions should be 755 \(-rwxr-xr-x\)
 You don't need anything else from the aa\_macro repo. But you'll want to read the
 [aa_macro User's Guide](https://github.com/fyngyrz/aa_macro/blob/master/users-guide.md)
 and then keep a link to the
@@ -117,7 +117,7 @@ system security. In that case, however, you'll need to change the associated imp
 statement in `slacking.py` as well.
 
 Second, you place `slacking.py` in the same place. Permissions on the 
-file should be 755 (-rwxr-xr-x) -- You can rename slacking.py if you
+file should be 755 \(-rwxr-xr-x\) -- You can rename slacking.py if you
 like, just be sure to tell slack's BOT configurator what the correct
 name is.
 
@@ -125,7 +125,7 @@ Third, you put the slack-cannery.txt file in a place that is read-write
 to your webserver user; this is because you can define macros right from
 slack, and they are saved in this file, which requires a write
 operation. Make sure the permissions on slack-cannery.txt are 666
-(-rw-rw-rw-) Obligatory remark: "Muhaha"
+\(-rw-rw-rw-\) Obligatory remark: "Muhaha"
 
 Fourth, set up the slacker.cfg file with the BOT token, the WebHook, and
 the location where slack-cannery.txt will be kept according to the
@@ -137,7 +137,7 @@ That's it. From there on in, things should work.
 ## Using `slacking.py`
 
 On slack, let's say you set up your BOT to respond to *\m*
-(that's what I did... because it's easy to type.) Try
+\(that's what I did... because it's easy to type.\) Try
 typing:
 
 **/m my reaction is {d}**
@@ -155,7 +155,7 @@ be done right from slack. Just invoke the bot with the style:
 After that, typing */m {pizza}* will emit "I love me some pizza"
 in the channel. The style is saved in `slack-cannery.txt` and will
 be permanent unless you either replace it with a new definition
-(later definitions supercede earlier ones) or delete it from the
+\(later definitions supercede earlier ones\) or delete it from the
 file at the server end.
 
 There is one limitation: You can't create a style, or directly use,
@@ -177,12 +177,12 @@ reprodude unless the double-space convention is used to prevent it.**
 
 Note that the input text _to_ `slacking.py` is cleansed of backticks,
 single and double quotes, the equals sign, and backslashes. These are
-replaced with UTF-8 entities (slack uses UTF-8) both for security, and
+replaced with UTF-8 entities \(slack uses UTF-8\) both for security, and
 so that the JSON sent back via the WebHook doesn't break. This limits
 what can be sent from the channel in terms of parameters to your
 aa_macro commands, but you can convert them back using the macros
-themselves if you really think that's a good idea (it isn't, but hey,
-it's your server. Perhaps you _like_ security holes.)
+themselves if you really think that's a good idea \(it isn't, but hey,
+it's your server. Perhaps you _like_ security holes.\)
 
 ## \(In\)Security
 
@@ -195,8 +195,8 @@ trust the others present with your server's health, welfare, data,
 connectivity, and so on.
 
 There are some provisions in place, such as the inability to define a
-macro that calls an OS system function directly from slack (you'll have
-to edit the `slack-cannery.txt` file for that) and some laundering of
+macro that calls an OS system function directly from slack \(you'll have
+to edit the `slack-cannery.txt` file for that\) and some laundering of
 various command-line risky characters, but that's not to say that this
 is by any means bulletproof. If you have input for me on how to make it
 more solid, security-wise, than it is, I will be delighted to pay
@@ -204,15 +204,16 @@ attention to what you have to say.
 
 ## Debugging
 
-If you decide to turn on debugging, `slacking.py` can record various things
-to a file called `slacking.txt` in the CGI directory. You'll probably have
-to manually create the file and set it's permissions so that it can be
-written to, as well as (hopefully temporarily) setting your CGI directory
-to be likewise writable. A better choice is to change the file to a
-location elsewhere with the correct permissions. I've left it this
-way to  keep it simple. I figure if you're going to be debugging, you're
-sharp enough to change the file. See the *record\(\)* procedure in
-`slacking.py` to make the change.
+If you decide to turn on debugging \(see the options at the top of the
+source code\), `slacking.py` can record various things to a file called
+`slacking.txt` in the CGI directory. You'll probably have to manually
+create the file and set it's permissions so that it can be written to,
+as well as \(hopefully temporarily\) setting your CGI directory to be
+likewise writable. A better choice is to change the file to a location
+elsewhere with the correct permissions. I've left it this way to  keep
+it simple. I figure if you're going to be debugging, you're sharp enough
+to change the file. See the **record\(\)** procedure in `slacking.py` to
+make the change.
 
 If you need to debug something, you might consider submitting any
 changes you find are required back to the repo so I can improve
