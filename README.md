@@ -198,11 +198,12 @@ connectivity, and so on.
 
 There are some provisions in place, such as the inability to define a
 macro that calls an OS system function directly from slack \(you'll have
-to edit the `slack-cannery.txt` file for that\) and some laundering of
-various command-line risky characters, but that's not to say that this
-is by any means bulletproof. If you have input for me on how to make it
-more solid, security-wise, than it is, I will be delighted to pay
-attention to what you have to say.
+to edit the `slack-cannery.txt` file for that\), some laundering of
+various command-line risky characters, and a requirement that the
+incoming BOT's token matches the one in the configure file, but that's
+not to say that this is by any means bulletproof. If you have input for
+me on how to make it more solid, security-wise, than it is, I will be
+delighted to pay attention to what you have to say.
 
 ## Debugging
 
