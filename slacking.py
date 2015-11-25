@@ -60,6 +60,8 @@ elif MODE == 3:		# log to WWRITE/RECORDER and act like pure BOT
 	test = True
 	logging = True
 
+# Collapse multiple spaces into single spaces
+# -------------------------------------------
 def crush(t):
 	pt = t
 	qt = ''
@@ -69,6 +71,10 @@ def crush(t):
 	t = pt.strip()
 	return t
 
+# When there are multiple definitions of the same style,
+# remove the ones that are older (that is, nearer the
+# top of the file.)
+# ------------------------------------------------------
 def cleanup():
 	try:
 		fh = open(cn)
@@ -95,6 +101,8 @@ def cleanup():
 		m = 'Cleanup failed: '+str(e)
 	return m
 
+# Cleans up text so it is JSON-packaging compatible
+# -------------------------------------------------
 def textwasher(t):
 	kk = 'furshulgenerblinkenlights'
 	t = t.replace('\\',kk)
@@ -107,8 +115,9 @@ def textwasher(t):
 	t = t.replace('=','\\u003D')
 	return t
 
-RECORDER = ''
-
+# Logging
+# -------
+RECORDER = '' # set from config file
 def record(s):
 	global RECORDER
 	global logging
@@ -123,16 +132,21 @@ def record(s):
 	except:
 		pass
 
+# This writes to stdout, which in turn ends up as BOT output
+# ----------------------------------------------------------
 def w(t=''):
 	if t != '':
 		sys.stdout.write(t)
 #	sys.stdout.flush() # flushing makes slack say 'OK', undesirable
 
-# This responds to the robot:
-# ---------------------------
+# This responds to the BOT. At least a content-type header
+# is required, or the apache2 webserver will throw an error
+# ---------------------------------------------------------
 hdr = 'Content-type: text/plain\n\n'
 w(hdr)
 
+# config file reader
+# ------------------
 def getcfg(file=None):
 	ray = {}
 	if file == None:
@@ -148,7 +162,8 @@ def getcfg(file=None):
 		print str(e)+' "'+line+'"'
 	return ray
 
-
+# Actually read the config file
+# -----------------------------
 try:
 	c = getcfg('slacker.cfg')
 
@@ -171,6 +186,9 @@ except Exception,e:
 
 cn = "%sslack-cannery.txt" % (WWRITE)
 
+# Various ways to call operating system commands and scripts
+# subprocess seems to be the best way
+# ----------------------------------------------------------
 def doit(thing):
 	if 0:
 		os.system(thing)
@@ -180,6 +198,8 @@ def doit(thing):
 		except Exception,e:
 			record(str(e))
 
+# Capture information from the BOT's CGI POST
+# -------------------------------------------
 try:
 	form = cgi.FieldStorage(keep_blank_values=1)
 	token			= form['token'].value
@@ -200,7 +220,16 @@ except:
 		w('Bad Parameter(s)')
 		raise SystemExit
 
+# make sure request at least seems to come from slack BOT
+# -------------------------------------------------------
+if token != TOKEN:
+	w('Bad Token')
+	raise SystemExit
 
+# Check incoming text for balanced [] and {}
+# if unbalanced, we're going to refuse to store
+# styles, plus whine about it
+# ---------------------------------------------
 store = False
 lbc = 0
 rbc = 0
@@ -219,6 +248,8 @@ else:
 	w(text)
 	raise SystemExit
 
+# detect attempts to store styles from slack
+# ------------------------------------------
 if len(text) > 7:
 	if text[0:7] == "[style ":
 		try:
@@ -228,7 +259,8 @@ if len(text) > 7:
 		else:
 			store = True
 
-
+# Prevent use of system level aa_macro features
+# ---------------------------------------------
 t = text.lower()
 badlist = ['[sys ','[include ','[embrace ']
 for el in badlist:
@@ -237,6 +269,8 @@ for el in badlist:
 		w(text)
 		raise SystemExit
 
+# store style if that's what needs to be done
+# -------------------------------------------
 if store == True:
 	try:
 		fh = open(cn,'a')
@@ -251,19 +285,18 @@ if store == True:
 else:
 	text = '[include %s]%s' % (cn,text)
 
+# grab an instance of aa_macro to use to process text
+# ---------------------------------------------------
 a = macro()
 
+# Do the text processing
+# ----------------------
 record('feed to aa_macro: '+text)
 record('1')
 try:
 	text = a.do(text)
 except:
-	text = 'a.do() threw an exception. Ooops.'
-
-record('2')
-if token != TOKEN:
-	w('Bad Token')
-	raise SystemExit
+	text = 'macro.do() threw an exception. Ooops.'
 
 record('3')
 
@@ -279,6 +312,8 @@ record('4')
 # -----------------------------------
 text = crush(text)
 
+# Provide help
+# ------------
 record('5')
 if text == 'help':
 	text = 'Help:\n'
@@ -286,10 +321,14 @@ if text == 'help':
 	text+= '*help* - this message\n'
 	text+= '*vocab* - dumps current style vocabulary\n'
 
+# Clean up older versions of macro duplicates
+# -------------------------------------------
 record('6')
 if text == 'cleanup':
 	text = cleanup()
 
+# Output list of available macros
+# -------------------------------
 record('7')
 openvocab = not test
 record('pre-vocab"%s"' % (text))
@@ -309,20 +348,19 @@ if text == 'vocab':
 				line = line.replace('}','\\u007D')
 			line += '\n'
 			text += line
-#		if openvocab == False:
-#			w(text)
-#			raise SystemExit
 	except:
 		text = 'Unable to open "%s"' % (cn)
 
+# in debug mode, log text now
+# ---------------------------
 if test == True:
 	s = user_name+': '+text.strip()
 	record(s)
 	w(s)
 	raise SystemExit
 
+# Throw result to channel using slack WebHook
+# -------------------------------------------
 cmd = "curl -X POST --data-urlencode 'payload={\"username\": \"%s\", \"text\": \"%s\"}' %s" % (user_name,text,HOOK)
-
-record('6809')
 record(cmd)
 doit(cmd)
