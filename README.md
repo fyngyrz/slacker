@@ -51,6 +51,8 @@ This is the complete `aa_macro` source I use to invoke the knowledgebase:
 
 ![macro source](http://fyngyrz.com/images/d5.png)  
 
+\(Okay, look, this is not the time to critique my KB test database, lol\)
+
 Here's what you're looking at: The square brackets define `aa_macro`
 primitives. "style" is the primitive that defines a macro. "kb" is the
 name of the macro. "sys" is the primitive that runs and captures system
