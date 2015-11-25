@@ -75,7 +75,9 @@ def crush(t):
 # remove the ones that are older (that is, nearer the
 # top of the file.)
 # ------------------------------------------------------
+cn = ''
 def cleanup():
+	global cn
 	try:
 		fh = open(cn)
 		dat = fh.read()
