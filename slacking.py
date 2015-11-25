@@ -22,8 +22,8 @@ from aa_macro import *
 #                 consequences of this are entirely yours. Have you written your congresscritter
 #                 about patent and copyright reform yet?
 #  Incep Date: November 24th, 2015
-#     LastRev: November 24th, 2015
-#  LastDocRev: November 24th, 2015
+#     LastRev: November 25th, 2015
+#  LastDocRev: November 25th, 2015
 # Tab spacing: 4 (set your editor to this for sane formatting while reading)
 #     Dev Env: Ubuntu 12.04.5 LTS, Python 2.7.3, Apache2
 #      Status: BETA
@@ -44,17 +44,19 @@ from aa_macro import *
 #               I mention you should read the disclaimers? Because you know,
 #               you really should. Several times. Read the disclaimers, that is.
 
-mode = 0
-if mode == 0:		# normal operatations
+# Debug control
+# -------------
+MODE = 0
+if MODE == 0:		# normal operatations
 	test = False
 	logging = False
-elif mode == 2:		# just log to WWRITE/RECORDER file
+elif MODE == 1:		# just log to WWRITE/RECORDER file
 	test = False
 	logging = True
-elif mode == 3:		# test mode: act like pure BOT
+elif MODE == 2:		# test mode: act like pure BOT
 	test = True
 	logging = False
-elif mode == 4:		# log to WWRITE/RECORDER and act like pure BOT
+elif MODE == 3:		# log to WWRITE/RECORDER and act like pure BOT
 	test = True
 	logging = True
 
@@ -146,18 +148,26 @@ def getcfg(file=None):
 		print str(e)+' "'+line+'"'
 	return ray
 
-c = getcfg('slacker.cfg')
 
-HOOK = c['HOOK']
+try:
+	c = getcfg('slacker.cfg')
 
-TOKEN = c['TOKEN']
+	MODE = int(c['MODE'])
 
-WWRITE = c['WWRITE']
-if WWRITE[-1:] != '/':
-	WWRITE = '%s/' % (WWRITE)
+	HOOK = c['HOOK']
 
-RECORDER = c['RECORDER']
-RECORDER = '%s%s' % (WWRITE,RECORDER)
+	TOKEN = c['TOKEN']
+
+	WWRITE = c['WWRITE']
+	if WWRITE[-1:] != '/':
+		WWRITE = '%s/' % (WWRITE)
+
+	RECORDER = c['RECORDER']
+	RECORDER = '%s%s' % (WWRITE,RECORDER)
+except Exception,e:
+	t = 'Failed to set config: "%s"' % (str(e))
+	w(t)
+	raise SystemExit
 
 cn = "%sslack-cannery.txt" % (WWRITE)
 
