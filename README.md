@@ -211,15 +211,10 @@ delighted to pay attention to what you have to say.
 
 If you decide to turn on debugging \(see the options at the top of the
 source code\), `slacking.py` can record various things to a file called
-`slacking.txt` in the CGI directory. You'll probably have to manually
-create the file and set it's permissions so that it can be written to,
-as well as \(hopefully temporarily\) setting your CGI directory to be
-likewise writable. A better choice is to change the file to a location
-elsewhere with the correct permissions. I've left it this way to  keep
-it simple. I figure if you're going to be debugging, you're sharp enough
-to change the file. See the **record\(\)** procedure in `slacking.py` to
-make the change.
+`slacking.txt` in the directory set by the WWRITE config variable. There
+are four operating modes; normal, logging on, act-as-BOT, and logging +
+act-as-BOT.
 
-If you need to debug something, you might consider submitting any
-changes you find are required back to the repo so I can improve
+If find you need to debug something, you might consider submitting any
+changes you think are required back to the repo so I can improve
 `slacking.py`.
