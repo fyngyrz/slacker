@@ -47,7 +47,7 @@ responses arrive in the public channel:
 ![Further inquiry...](http://fyngyrz.com/images/d3.png)  
 ![...Answer](http://fyngyrz.com/images/d4.png)  
 
-\(Okay, look, this is not the time to critique my KB test database, lol\)
+\(Okay, look, this is not the time to critique my KB test mindspace, lol\)
 
 This is the complete `aa_macro` source I use to invoke the knowledgebase:
 
