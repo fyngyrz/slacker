@@ -87,13 +87,14 @@ more explanation, just me know via the repo and I'll get right on it.
 
 ### The slack end of things
 
-You'll need two items from slack. The first is a BOT token, and the
-second is an incoming WebHook URL. The BOT is used to send what you type
+You'll need two items from slack. The first is a BOT token. The BOT is used to send what you type
 to the script on your server, and the WebHook is used to send the result
-back to slack. Both are easily obtained from the "Integrations" menu
+back to slack. Both are easily obtained from the "Configure Integrations" menu
 option on slack within your team space. The token is used to verify that
 the incoming request to `slacking.py` on your webserver is actually
-coming from slack.
+coming from slack. You want to set up one of these:
+
+![BOT Integration](http://fyngyrz.com/images/dd1.png)  
 
 Slack will ask what URL the BOT is to invoke. Let's say that you are
 using the cgi-bin web structure, so that CGI runs on your server when
@@ -105,6 +106,11 @@ In that case, the URL you provide to slack in requesting the BOT token
 will be:
 
 http://yourserver.com/cgi-bin/slacking.py
+
+The second thing to configure on slack is an incoming WebHook URL. It looks
+like this:
+
+![Incoming WebHook Integration](http://fyngyrz.com/images/dd2.png)  
 
 ### On your server
 
