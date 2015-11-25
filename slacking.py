@@ -45,17 +45,17 @@ from aa_macro import *
 #               you really should. Several times. Read the disclaimers, that is.
 
 mode = 0
-if mode == 0:
+if mode == 0:		# normal operatations
 	test = False
 	logging = False
-elif mode == 2:
-	test = True
+elif mode == 2:		# just log to WWRITE/RECORDER file
+	test = False
 	logging = True
-elif mode == 3:
+elif mode == 3:		# test mode: act like pure BOT
 	test = True
 	logging = False
-elif mode == 4:
-	test = False
+elif mode == 4:		# log to WWRITE/RECORDER and act like pure BOT
+	test = True
 	logging = True
 
 def crush(t):
@@ -105,14 +105,17 @@ def textwasher(t):
 	t = t.replace('=','\\u003D')
 	return t
 
+RECORDER = ''
+
 def record(s):
+	global RECORDER
 	global logging
 	if logging == False:
 		return
 	if s == '':
 		s = 'attempt to record an empty string'
 	try:
-		fh = open('slacking.txt','a')
+		fh = open(RECORDER,'a')
 		fh.write(s+'\n')
 		fh.close()
 	except:
@@ -123,8 +126,8 @@ def w(t=''):
 		sys.stdout.write(t)
 #	sys.stdout.flush() # flushing makes slack say 'OK', undesirable
 
-# This will respond to the robot:
-# -------------------------------
+# This responds to the robot:
+# ---------------------------
 hdr = 'Content-type: text/plain\n\n'
 w(hdr)
 
@@ -152,6 +155,10 @@ TOKEN = c['TOKEN']
 WWRITE = c['WWRITE']
 if WWRITE[-1:] != '/':
 	WWRITE = '%s/' % (WWRITE)
+
+RECORDER = c['RECORDER']
+RECORDER = '%s%s' % (WWRITE,RECORDER)
+
 cn = "%sslack-cannery.txt" % (WWRITE)
 
 def doit(thing):
