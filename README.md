@@ -19,7 +19,7 @@ it in the public channel, where it is fed through `aa_macro.py` by
 form via a slack WebHook, identified as having come from you.  Here's
 the data flow:
 
-SlashCommand **--\> server/slacking.py --\> aa_macro --\> WebHook --\>** Channel
+SlashCommand **--\> server/slacking.py --\> aa_macro.py --\> WebHook --\>** Channel
 
 For instance, my ID on slack is "fyngyrz", and the slash command I've
 set up uses **/m** so this is an example of one of the things I can do:
