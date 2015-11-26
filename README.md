@@ -8,16 +8,17 @@ Required:
 * `slacking.py`
 * A webserver within which you can install this software
 
-`slacking.py` is software that brings the power of the `aa_macro.py`
-library to slack's groupware.
+`slacking.py` is software that brings the extensive text manipulation
+capabilities of my `aa_macro.py` library to slack's groupware.
 
-The way it works is you type a "slash command" invocation into a room, which is
-private \(meaning, no one sees what you type but you\) the slash command sends what
-you typed off to your webserver without dumping it in the public
-channel, where it is fed through `aa_macro.py` by `slacking.py`, and then
-returned to the room publicly in the processed form, identified as
-having come from you. For instance, my ID on slack is "fyngyrz", and the
-slash command I've set up uses **/m** so this is an example of one of the things I can do:
+The way it works is you type a "slash command" invocation into a room,
+which is private \(meaning, no one sees what you type but you\) the
+slash command sends what you typed off to your webserver without dumping
+it in the public channel, where it is fed through `aa_macro.py` by
+`slacking.py`, and then returned to the room publicly in the processed
+form, identified as having come from you. For instance, my ID on slack
+is "fyngyrz", and the slash command I've set up uses **/m** so this is
+an example of one of the things I can do:
 
 After I type this: **/m The temperature here is \{tmp\}**
 
