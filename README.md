@@ -175,7 +175,7 @@ WebHook:
 
 There are two ways to add macros to the system.
 
-## Creating Macros on Slack
+### Creating Macros on Slack
 
 The first can be done right from slack. Just invoke the slash command
 with the style:
