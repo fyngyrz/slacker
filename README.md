@@ -171,7 +171,7 @@ typing:
 You should see, in the channel that you assigned to the
 WebHook:
 
-**my reaction is derp**
+**yourusername: my reaction is derp**
 
 There are two ways to add macros to the system. The first can be done
 right from slack. Just invoke the slash command with the style:
