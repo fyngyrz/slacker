@@ -90,7 +90,7 @@ more explanation, just me know via the repo and I'll get right on it.
 ### The slack end of things
 
 You'll need two items from slack. Both are easily obtained from the
-"Configure Integrations" menu option on slack within your team space.
+"Configure Integrations" menu selection on slack within your team space.
 
 #### The Slash Command
 
