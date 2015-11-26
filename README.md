@@ -135,7 +135,7 @@ you have to do with it is put `aa_macro.py` in the directory where your
 CGI runs. Permissions should be 755 \(-rwxr-xr-x\)
 You don't need anything else from the aa\_macro repo. But you'll want to read the
 [aa_macro User's Guide](https://github.com/fyngyrz/aa_macro/blob/master/users-guide.md)
-and then keep a link to the
+and then keep a link to that and the 
 [aa_macro Quick Reference](https://github.com/fyngyrz/aa_macro/blob/master/quickref.md)
 handy. Your webserver must be set up to allow execution of Python scripts in its CGI
 configuration. You can rename "aa\_macro.py" and you probably should as a matter of
