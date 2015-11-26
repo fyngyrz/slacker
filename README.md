@@ -89,6 +89,9 @@ more explanation, just me know via the repo and I'll get right on it.
 
 You'll need two items from slack. Both are easily obtained from the
 "Configure Integrations" menu option on slack within your team space.
+
+#### The Slash Command
+
 The first is a "Slash Command" token. The slash command is used to send
 what you type to the script on your server. The token is used to verify
 that the incoming request to `slacking.py` on your webserver is actually
@@ -107,10 +110,23 @@ will be:
 
 http://yourserver.com/cgi-bin/slacking.py
 
+That's it for the Slash Command setup.
+
+#### The Incoming WebHook
+
 The second thing to configure on slack is an incoming WebHook URL. The
-WebHook is used to send the result back to slack.It looks like this:
+WebHook is used to send the result back to slack. It looks like this:
 
 ![Incoming WebHook Integration](http://fyngyrz.com/images/dd2.png)  
+
+When you configure the WebHook, slack will provide you with a URL at slack itself
+that begins like this:
+
+**https://hooks.slack.com/services/**...
+
+You simply copy and paste that enture URL, including the portion that goes
+where the "..." is in the above fragment, into the configure file where it
+says to. That's it for the WebHook setup.
 
 ### On your server
 
