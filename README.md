@@ -28,6 +28,8 @@ After I type this: **/m The temperature here is \{tmp\}**
 
 This text appears: **fyngyrz: The temperature here is 32.2F**
 
+> **Note:** [tmp.py is available here](https://github.com/fyngyrz/NWS-Temperature)
+
 `aa_macro` is _extremely_ capable. It can take parameters, parse them,
 run system commands, is extensible via external files and can use
 include files. For instance, this:
