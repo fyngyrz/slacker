@@ -89,7 +89,7 @@ more explanation, just me know via the repo and I'll get right on it.
 
 You'll need two items from slack. Both are easily obtained from the
 "Configure Integrations" menu option on slack within your team space.
-The first is a "Slash Command" token. The slach command is used to send
+The first is a "Slash Command" token. The slash command is used to send
 what you type to the script on your server. The token is used to verify
 that the incoming request to `slacking.py` on your webserver is actually
 coming from slack. You want to set up one of these:
