@@ -173,8 +173,12 @@ WebHook:
 
 **yourusername: my reaction is derp**
 
-There are two ways to add macros to the system. The first can be done
-right from slack. Just invoke the slash command with the style:
+There are two ways to add macros to the system.
+
+## Creating Macros on Slack
+
+The first can be done right from slack. Just invoke the slash command
+with the style:
 
 **/m [style pizza I love me some pizza]**
 
@@ -189,6 +193,8 @@ There is one limitation: You can't create a style, or directly use,
 slack. That's because they would open the door to a significant
 security hole on your server where almost anything could be done.
 If you want to use these features, you must use the second method.
+
+### Creating Macros Directly on the Server
 
 The second way is by directly editing the `slack-cannery.txt` file at
 the server end. You can put anything in there directly, which allows you
