@@ -124,7 +124,7 @@ that begins like this:
 
 **https://hooks.slack.com/services/**...
 
-You simply copy and paste that enture URL, including the portion that goes
+You simply copy and paste that entire URL, including the portion that goes
 where the "..." is in the above fragment, into the configure file where it
 says to. That's it for the WebHook setup.
 
