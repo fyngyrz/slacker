@@ -253,3 +253,22 @@ act-as-slash-command.
 If find you need to debug something, you might consider submitting any
 changes you think are required back to the repo so I can improve
 `slacking.py`.
+
+## Notes
+
+###  About HTML, slack, and aa_macro
+
+If you've read the `aa_macro` documentation, you;re likely now aware
+that `aa_macro` has a lot of built-in capabilities for generating HTML
+such as lists and tables and the like. This isn't of any particular use
+within the context of slack, as slack doesn't let any HTML through to
+the channel in such a way as your browser can see it properly.
+
+Consequently you can't color text or change fonts or anything fun like
+that.
+
+However, aside from the cosmetic aspects of HTML formatting, there isn't
+much else that can't be done. As far as what slack will accept, such as
+wrapping underlines and asterisks around text for italic and underline,
+bulleted lists and so on, you can certainly incorporate those things, or
+anything else they come up with on the order of text-driven formatting.
