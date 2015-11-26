@@ -19,7 +19,7 @@ returned to the room publicly in the processed form, identified as
 having come from you. For instance, my ID on slack is "fyngyrz", and the
 slash command I've set up uses **/m** so this is an example of one of the things I can do:
 
-After I type this: **/m The temperature here is {tmp}**
+After I type this: **/m The temperature here is \{tmp\}**
 
 This text appears: **fyngyrz: The temperature here is 32.2F**
 
@@ -27,11 +27,11 @@ This text appears: **fyngyrz: The temperature here is 32.2F**
 run system commands, is extensible via external files and can use
 include files. For instance, this:
 
-**[style gm Good morning, [b]]**
+**\[style gm Good morning, \[b\]\]**
 
 When invoked this way:
 
-**/m {gm Ben}**
+**/m \{gm Ben\}**
 
 Will produce this in-channel \(of course it won't say "fyngyrz" for you\):
 
@@ -59,6 +59,8 @@ name of the macro. "sys" is the primitive that runs and captures system
 executables. "./aip.py" is the actual command run by "sys". and "[b]" is
 the primitive that feeds the content after the macro name into the macro
 in that position.
+
+When you invoke a macro you use curly braces: \{mymacro\}
 
 The stdout output of `aip.py` is automatically captured, and returned to
 the channel by `slacking.py`. See how easy that was?
@@ -166,7 +168,7 @@ On slack, let's say you set up your slash command to respond to *\m*
 \(that's what I did... because it's easy to type.\) Try
 typing:
 
-**/m my reaction is {d}**
+**/m my reaction is \{d\}**
 
 You should see, in the channel that you assigned to the
 WebHook:
@@ -180,9 +182,9 @@ There are two ways to add macros to the system.
 The first can be done right from slack. Just invoke the slash command
 with the style:
 
-**/m [style pizza I love me some pizza]**
+**/m \[style pizza I love me some pizza\]**
 
-After that, typing */m {pizza}* will emit "I love me some pizza"
+After that, typing */m \{pizza\}* will emit "I love me some pizza"
 in the channel. The style is saved in `slack-cannery.txt` and will
 be permanent unless you either replace it with a new definition
 \(later definitions supercede earlier ones\) or delete it from the
