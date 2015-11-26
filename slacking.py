@@ -53,10 +53,10 @@ if MODE == 0:		# normal operatations
 elif MODE == 1:		# just log to WWRITE/RECORDER file
 	test = False
 	logging = True
-elif MODE == 2:		# test mode: act like pure BOT
+elif MODE == 2:		# test mode: act like pure slash command
 	test = True
 	logging = False
-elif MODE == 3:		# log to WWRITE/RECORDER and act like pure BOT
+elif MODE == 3:		# log to WWRITE/RECORDER and act like pure slash command
 	test = True
 	logging = True
 
@@ -134,16 +134,16 @@ def record(s):
 	except:
 		pass
 
-# This writes to stdout, which in turn ends up as BOT output
-# ----------------------------------------------------------
+# This writes to stdout, which in turn ends up as slash command output
+# --------------------------------------------------------------------
 def w(t=''):
 	if t != '':
 		sys.stdout.write(t)
 #	sys.stdout.flush() # flushing makes slack say 'OK', undesirable
 
-# This responds to the BOT. At least a content-type header
+# This responds to the slash command. At least a content-type header
 # is required, or the apache2 webserver will throw an error
-# ---------------------------------------------------------
+# ------------------------------------------------------------------
 hdr = 'Content-type: text/plain\n\n'
 w(hdr)
 
@@ -200,8 +200,8 @@ def doit(thing):
 		except Exception,e:
 			record(str(e))
 
-# Capture information from the BOT's CGI POST
-# -------------------------------------------
+# Capture information from the slash command's CGI POST
+# ------------------------------------------------------
 try:
 	form = cgi.FieldStorage(keep_blank_values=1)
 	token			= form['token'].value
@@ -222,8 +222,8 @@ except:
 		w('Bad Parameter(s)')
 		raise SystemExit
 
-# make sure request at least seems to come from slack BOT
-# -------------------------------------------------------
+# make sure request at least seems to come from slack slash command
+# -----------------------------------------------------------------
 if token != TOKEN:
 	w('Bad Token')
 	raise SystemExit

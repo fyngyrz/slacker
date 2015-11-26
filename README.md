@@ -11,8 +11,8 @@ Required:
 `slacking.py` is software that brings the power of the `aa_macro.py`
 library to slack's groupware.
 
-The way it works is you type a BOT invocation into a room, which is
-private \(meaning, no one sees what you type but you\) the BOT sends what
+The way it works is you type a "slash command" invocation into a room, which is
+private \(meaning, no one sees what you type but you\) the slash command sends what
 you typed off to your webserver without dumping it in the public
 channel, where it is fed through `aa_macro.py` by `slacking.py`, and then
 returned to the room publicly in the processed form, identified as
@@ -71,7 +71,7 @@ Command | Function
 **vocab** | lists the available macros in `slack-cannery.txt`  
 **cleanup** | removes older versions of macros you've re-written  
 
-You use these within slack like this:
+You use these within slack like this \(assuming you choose M as I did\):
 
 **/m help**
 
@@ -89,20 +89,20 @@ more explanation, just me know via the repo and I'll get right on it.
 
 You'll need two items from slack. Both are easily obtained from the
 "Configure Integrations" menu option on slack within your team space.
-The first is a BOT token. The BOT is used to send what you type to the
-script on your server. The token is used to verify that the incoming
-request to `slacking.py` on your webserver is actually coming from
-slack. You want to set up one of these:
+The first is a "Slash Command" token. The slach command is used to send
+what you type to the script on your server. The token is used to verify
+that the incoming request to `slacking.py` on your webserver is actually
+coming from slack. You want to set up one of these:
 
-![BOT Integration](http://fyngyrz.com/images/dd1.png)  
+![BOT Integration](http://fyngyrz.com/images/ddd9.png)  
 
-Slack will ask what URL the BOT is to invoke. Let's say that you are
-using the cgi-bin web structure, so that CGI runs on your server when
-invoked like this:
+Slack will ask what URL the slash command is to invoke. Let's say that
+you are using the cgi-bin web structure, so that CGI runs on your server
+when invoked like this:
 
 http://yourserver.com/cgi-bin/yourcgi.py
 
-In that case, the URL you provide to slack in requesting the BOT token
+In that case, the URL you provide to slack in requesting the slash command token
 will be:
 
 http://yourserver.com/cgi-bin/slacking.py
@@ -146,7 +146,7 @@ That's it. From there on in, things should work.
 
 ## Using `slacking.py`
 
-On slack, let's say you set up your BOT to respond to *\m*
+On slack, let's say you set up your slash command to respond to *\m*
 \(that's what I did... because it's easy to type.\) Try
 typing:
 
@@ -218,8 +218,8 @@ delighted to pay attention to what you have to say.
 If you decide to turn on debugging \(see the options at the top of the
 source code\), `slacking.py` can record various things to a file called
 `slacking.txt` in the directory set by the WWRITE config variable. There
-are four operating modes; normal, logging on, act-as-BOT, and logging +
-act-as-BOT.
+are four operating modes; normal, logging on, act-as-slash-command, and logging on +
+act-as-slash-command.
 
 If find you need to debug something, you might consider submitting any
 changes you think are required back to the repo so I can improve
