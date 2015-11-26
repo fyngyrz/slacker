@@ -17,7 +17,7 @@ you typed off to your webserver without dumping it in the public
 channel, where it is fed through `aa_macro.py` by `slacking.py`, and then
 returned to the room publicly in the processed form, identified as
 having come from you. For instance, my ID on slack is "fyngyrz", and the
-BOT I've set up uses **/m** so this is an example of one of the things I can do:
+slash command I've set up uses **/m** so this is an example of one of the things I can do:
 
 After I type this: **/m The temperature here is {tmp}**
 
@@ -94,7 +94,7 @@ what you type to the script on your server. The token is used to verify
 that the incoming request to `slacking.py` on your webserver is actually
 coming from slack. You want to set up one of these:
 
-![BOT Integration](http://fyngyrz.com/images/ddd9.png)  
+![Slash Command Integration](http://fyngyrz.com/images/ddd9.png)  
 
 Slack will ask what URL the slash command is to invoke. Let's say that
 you are using the cgi-bin web structure, so that CGI runs on your server
@@ -128,8 +128,8 @@ statement in `slacking.py` as well.
 
 Second, you place `slacking.py` in the same place. Permissions on the 
 file should be 755 \(-rwxr-xr-x\) -- You can rename slacking.py if you
-like, just be sure to tell slack's BOT configurator what the correct
-name is.
+like, just be sure to tell slack's slash command configurator what the
+correct name is.
 
 Third, you put the slack-cannery.txt file in a place that is read-write
 to your webserver user; this is because you can define macros right from
@@ -137,10 +137,10 @@ slack, and they are saved in this file, which requires a write
 operation. Make sure the permissions on slack-cannery.txt are 666
 \(-rw-rw-rw-\) Obligatory remark: "Muhaha"
 
-Fourth, set up the slacker.cfg file with the BOT token, the WebHook, and
-the location where slack-cannery.txt will be kept according to the
-directions within the file. `slacker.cfg` goes in the same CGI location
-as `slacking.py`, as it is read-only under normal conditions.
+Fourth, set up the slacker.cfg file with the slash command token, the
+WebHook, and the location where slack-cannery.txt will be kept according
+to the directions within the file. `slacker.cfg` goes in the same CGI
+location as `slacking.py`, as it is read-only under normal conditions.
 
 That's it. From there on in, things should work.
 
@@ -157,8 +157,8 @@ WebHook:
 
 **my reaction is derp**
 
-There are two ways to add macros to the system. The first can
-be done right from slack. Just invoke the bot with the style:
+There are two ways to add macros to the system. The first can be done
+right from slack. Just invoke the slash command with the style:
 
 **/m [style pizza I love me some pizza]**
 
@@ -208,10 +208,10 @@ There are some provisions in place, such as the inability to define a
 macro that calls an OS system function directly from slack \(you'll have
 to edit the `slack-cannery.txt` file for that\), some laundering of
 various command-line risky characters, and a requirement that the
-incoming BOT's token matches the one in the configure file, but that's
-not to say that this is by any means bulletproof. If you have input for
-me on how to make it more solid, security-wise, than it is, I will be
-delighted to pay attention to what you have to say.
+incoming slash command's token matches the one in the configure file,
+but that's not to say that this is by any means bulletproof. If you have
+input for me on how to make it more solid, security-wise, than it is, I
+will be delighted to pay attention to what you have to say.
 
 ## Debugging
 
